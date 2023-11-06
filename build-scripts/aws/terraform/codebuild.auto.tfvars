@@ -15,6 +15,6 @@
  */
 
 region = "us-west-2"
-build_artifacts_output_bucket = "adroll-test-sandbox-2"
+build_artifacts_output_bucket = "adroll-aggregation-service-build-artifacts"
 /* This personal access token has no permissions */
 github_personal_access_token = "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"
