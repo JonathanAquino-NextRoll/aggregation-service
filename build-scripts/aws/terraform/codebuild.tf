@@ -306,4 +306,16 @@ resource "aws_codebuild_project" "aggregation-service-artifacts-build" {
   }
 
   source_version = var.aggregation_service_github_repo_branch == "" ? "v${local.release_version}" : var.aggregation_service_github_repo_branch
+
+  vpc_config {
+    vpc_id = "vpc-59f8063c"
+
+    subnets = [
+      "subnet-099f7250"
+    ]
+
+    security_group_ids = [
+      "sg-00350541fc1080349"
+    ]
+  }
 }
