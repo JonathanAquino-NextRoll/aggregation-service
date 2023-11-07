@@ -18,4 +18,4 @@ region = "us-west-2"
 build_artifacts_output_bucket = "adroll-aggregation-service-build-artifacts"
 /* This fine-grained personal access token has no permissions
    and expires after a certain number of days. */
-github_personal_access_token = "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"
+github_personal_access_token = "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"
