@@ -143,6 +143,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "ec2:StopInstances",
         "ec2:TerminateInstances",
         "ec2:DescribeDhcpOptions",
+        "ec2:DescribeNetworkInterfaces",
         "ecr:CompleteLayerUpload",
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
