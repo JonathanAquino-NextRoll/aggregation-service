@@ -143,10 +143,6 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "ec2:StopInstances",
         "ec2:TerminateInstances",
         "ec2:DescribeDhcpOptions",
-        "ec2:CreateNetworkInterface",
-        "ec2:DescribeNetworkInterfaces",
-        "ec2:DeleteNetworkInterface",
-        "ec2:DescribeVpcs",
         "ecr:CompleteLayerUpload",
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
@@ -160,23 +156,6 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "ecr:GetDownloadUrlForLayer"
       ],
       "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ec2:CreateNetworkInterfacePermission"
-      ],
-      "Resource": "arn:aws:ec2:us-west-2:771945457201:network-interface/*",
-      "Condition": {
-        "StringEquals": {
-          "ec2:AuthorizedService": "codebuild.amazonaws.com"
-        },
-        "ArnEquals": {
-          "ec2:Subnet": [
-            "arn:aws:ec2:us-west-2:771945457201:subnet/subnet-249e465d"
-          ]
-        }
-      }
     },
     {
       "Effect": "Allow",
@@ -327,16 +306,4 @@ resource "aws_codebuild_project" "aggregation-service-artifacts-build" {
   }
 
   source_version = var.aggregation_service_github_repo_branch == "" ? "v${local.release_version}" : var.aggregation_service_github_repo_branch
-
-  vpc_config {
-    vpc_id = "vpc-59f8063c"
-
-    subnets = [
-      "subnet-249e465d"
-    ]
-
-    security_group_ids = [
-      "sg-00350541fc1080349"
-    ]
-  }
 }
