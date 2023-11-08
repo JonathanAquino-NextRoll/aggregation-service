@@ -143,8 +143,10 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "ec2:StopInstances",
         "ec2:TerminateInstances",
         "ec2:DescribeDhcpOptions",
+        "ec2:CreateNetworkInterface",
         "ec2:DescribeNetworkInterfaces",
         "ec2:DeleteNetworkInterface",
+        "ec2:DescribeVpcs",
         "ecr:CompleteLayerUpload",
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
@@ -158,6 +160,23 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "ecr:GetDownloadUrlForLayer"
       ],
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateNetworkInterfacePermission"
+      ],
+      "Resource": "arn:aws:ec2:us-west-2:771945457201:network-interface/*",
+      "Condition": {
+        "StringEquals": {
+          "ec2:AuthorizedService": "codebuild.amazonaws.com"
+        },
+        "ArnEquals": {
+          "ec2:Subnet": [
+            "arn:aws:ec2:us-west-2:771945457201:subnet/subnet-099f7250"
+          ]
+        }
+      }
     },
     {
       "Effect": "Allow",
