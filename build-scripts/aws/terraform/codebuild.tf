@@ -173,7 +173,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         },
         "ArnEquals": {
           "ec2:Subnet": [
-            "arn:aws:ec2:us-west-2:771945457201:subnet/subnet-099f7250"
+            "arn:aws:ec2:us-west-2:771945457201:subnet/subnet-249e465d"
           ]
         }
       }
@@ -332,7 +332,7 @@ resource "aws_codebuild_project" "aggregation-service-artifacts-build" {
     vpc_id = "vpc-59f8063c"
 
     subnets = [
-      "subnet-099f7250"
+      "subnet-249e465d"
     ]
 
     security_group_ids = [
