@@ -144,6 +144,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "ec2:TerminateInstances",
         "ec2:DescribeDhcpOptions",
         "ec2:DescribeNetworkInterfaces",
+        "ec2:DeleteNetworkInterface",
         "ecr:CompleteLayerUpload",
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
